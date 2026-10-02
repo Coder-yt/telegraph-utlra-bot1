@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:050505,50:6A00FF,100:00C8FF&height=180&section=header&text=TELEGRAPH%20ULTRA%20BOT&fontSize=35&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Developed%20By%20Mohammed&descAlignY=60&descSize=16" width="100%">
+</p>
+
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=36BCF7F1&width=435&lines=Welcome+To+AU+Ultra+Telegraph+Bot;Create+Telegraph+Pages+Instantly;Made+By+Mohammed)](https://git.io/typing-svg)
 
 <p align="center">
@@ -15,11 +19,8 @@
   </a>
 </p>
 
----
 
-# 🚀 AU Ultra Telegraph Bot
-
-A powerful Telegram bot for creating Telegraph pages instantly.
+> **A powerful Telegram bot for creating Telegraph pages instantly.**
 
 ### ✨ Features
 
@@ -29,14 +30,6 @@ A powerful Telegram bot for creating Telegraph pages instantly.
 - 📊 Admin Stats Panel
 - ☁️ MongoDB Database
 - 🌐 Render & Koyeb Supported
-
----
-
-## 🤖 Demo Bot
-
-**Bot:** <a href="https://t.me/AU_Ultra_Telegraph_Bot">AU Telegraph Bot</a>
-
----
 
 <details>
 <summary><b>Click Here To Expand Variables</b></summary>
@@ -52,8 +45,6 @@ A powerful Telegram bot for creating Telegraph pages instantly.
 
 </details>
 
----
-
 ## ✨ Commands
 
 ```txt
@@ -63,8 +54,6 @@ panel  - Admin/Owner Control Panel (Owner only)
 stats  - Bot Statistics (Owner Only)
 broadcast - Send Messages To All User (Owner Only)
 ```
-
----
 
 ## 📌 Bot Feature
 
@@ -85,60 +74,90 @@ Example:
 ---
 
 <details>
-<summary><b>🌐 Deploy On Render</b></summary>
+<summary><h3>
+- <b> ᴅᴇᴘʟᴏʏᴍᴇɴᴛ </b>
+</h3></summary>
 
-### Build Command
+<h3 align="center">
+    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ʀᴇɴᴅᴇʀ 」─
+</h3>
+<p align="center">
+<a href="https://render.com/deploy?repo=https://github.com/MohammedDev-yt/telegraph-utlra-bot">
+<img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+</a>
+</p>
 
-```bash
-pip install -r requirements.txt
-```
-
-### Start Command
-
-```bash
-python bot.py
-```
-
-</details>
-
----
-
-<details>
-<summary><b>☁️ Deploy On Koyeb</b></summary>
-
-### Build Command
-
-```bash
-pip install -r requirements.txt
-```
-
-### Run Command
-
-```bash
-python bot.py
-```
+<h3 align="center">
+    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ᴋᴏʏᴇʙ 」─
+</h3>
+<p align="center">
+<a href="https://app.koyeb.com/deploy?type=git&repository=https://github.com/MohammedDev-yt/telegraph-utlra-bot">
+<img src="https://img.shields.io/badge/Deploy%20on%20Koyeb-121212?style=for-the-badge&logo=koyeb" alt="Deploy on Koyeb">
+</a>
+</p>
 
 </details>
 
 ---
+
+<details><summary>How To Keep Your Bot Alive</summary>
+<br>
+<b>Use these settings while deploying on Render:</b>
+<br><br>
+• Runtime: <code>Docker</code>
+<br><br>
+• Build Command:
+<code>pip install -r requirements.txt</code>
+<br><br>
+• Start Command:
+<code>python main.py</code>
+<br><br>
+<b>🌐 Keep Bot Alive 24/7 Using UptimeRobot</b>
+<br><br>
+Go to:
+https://uptimerobot.com/
+<br><br>
+Click:
+<b>Add New Monitor</b>
+<br><br>
+Use these settings 👇
+<br><br>
+<img src="https://telegra.ph/file/a79a156e44f43c9833b50.jpg">
+<br><br>
+<b>Type:</b>
+<code>HTTP(s)</code>
+<br><br>
+<b>URL:</b>
+<code>https://your-render-app.onrender.com</code>
+<br><br>
+<b>Monitoring Interval:</b>
+<code>5 Minutes</code>
+<br><br>
+After adding monitor click:
+<b>Create Monitor</b>
+<br><br>
+✅ Your bot will stay alive 24/7.
+</details>
+
 ## 👨‍💻 Developer
 
 <a href="https://t.me/Mr_Mohammed_29">ᴍᴏʜᴀᴍᴍᴇᴅ</a>
 
----
 
 ## ⭐ Fork & Star This Repo
 
 <p align="center">
 If you like this bot, please give it a ⭐ on GitHub.
 
-<a href="https://github.com/MD-Developer-yt/telegraph-ultra-bot">
+<a href="https://github.com/MohammedDev-yt/telegraph-ultra-bot">
 ⭐ Star Repository
 </a>
 </p>
 
-📢 Share with friends
+<p align="center">
+  <b>Made with ❤️ by Mohammed</b>
+</p>
 
----
-
-# DON'T REMOVE MY CREDITS
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:050505,50:6A00FF,100:00C8FF&height=120&section=footer"/>
+</p>
