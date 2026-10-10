@@ -1,3 +1,4 @@
+
 # ------------------------- #
 # Don't Remove Credit
 # Ask Doubt @AU_Bot_Discussion
@@ -5,6 +6,7 @@
 # ------------------------- #
 
 import asyncio
+
 from pyrogram import Client, filters
 from pyrogram.types import (
     InlineKeyboardMarkup,
@@ -18,32 +20,39 @@ from database import add_user, total_users, total_posts
 # CONFIG
 # ------------------------- #
 
-START_GIF = (
-    "https://media.giphy.com/media/"
-    "3o7aD2saalBwwftBIY/giphy.gif"
+START_IMAGE = (
+    "https://telegra.ph/file/7b935e63ed6fee8c999f3-6dbf85b31ac01389e4.jpg"
+)
+
+ABOUT_IMAGE = (
+    "https://telegra.ph/file/3fc5ec05583af1b0f9698-7c30a1d7b2204cc8e1.jpg"
 )
 
 START_TEXT = """
-<b>Welcome To AU Ultra Telegraph Bot</b>
+<b>Welcome To Ultra Telegraph Bot</b>
 """
 
 ABOUT_TEXT = """
-<b> ABOUT THIS BOT</b>
+<b>🤖 ABOUT THIS BOT</b>
 
-<b>Language : Python 3</b>
-<b>Library : Pyrogram</b>
-<b>Database : MongoDB</b>
-<b>Domain : Telegraph</b>
-<b>Updates: @Aero_Unity</b>
-<b>Owner : @Mr_Mohammed_29</b>
+<b>Language :</b> <a href="https://www.python.org/">Python 3</a>
+<b>Library :</b> <a href="https://docs.pyrogram.org/">Pyrogram</a>
+<b>Database :</b> <a href="https://www.mongodb.com/">MongoDB</a>
+<b>Domain :</b> <a href="https://telegra.ph/">Telegraph</a>
+<b>Updates :</b> <a href="https://t.me/Aero_Unity">Aero_Unity</a>
+<b>Owner :</b> <a href="https://t.me/Mr_Mohammed_29">Mohammed</a>
 """
 
 HELP_TEXT = """
 <b>❓ HELP MENU</b>
 
-<b>/tgm</b>
-→ Create a Telegraph page with Reply to a video/document with <code>/tgm</code>
-to create a detailed MediaInfo Telegraph page..
+• Reply to a video or document with <code>/tgm</code>
+to create a detailed MediaInfo Telegraph page.
+
+<b>/tgm</b> Reply To Documents,videos to get link
+<b>/screenshot</b> - Generate video screenshots relpy with media
+<b>/sample</b> - Generate a short video sample reply with media
+<b>/spek</b> - Generate an audio spectrogram reply with media
 """
 
 # ------------------------- #
@@ -52,12 +61,6 @@ to create a detailed MediaInfo Telegraph page..
 
 def start_buttons():
     return InlineKeyboardMarkup([
-        [
-            InlineKeyboardButton(
-                "• Updates •",
-                url="https://t.me/Aero_Unity"
-            )
-        ],
         [
             InlineKeyboardButton(
                 "• About •",
@@ -70,20 +73,24 @@ def start_buttons():
         ],
         [
             InlineKeyboardButton(
-                "• Settings •",
-                callback_data="settings_panel"
-            )
-        ],
-        [
+                "• Updates •",
+                url="https://t.me/Aero_Unity"
+            ),
             InlineKeyboardButton(
                 "• Owner •",
                 url="https://t.me/Mr_Mohammed_29"
             )
         ],
+        [
+            InlineKeyboardButton(
+                "• Settings •",
+                callback_data="settings_panel"
+            )
+        ],
     ])
 
 
-def back_button():
+def home_button():
     return InlineKeyboardMarkup([
         [
             InlineKeyboardButton(
@@ -94,8 +101,18 @@ def back_button():
     ])
 
 
-def settings_back_button():
+def about_buttons():
     return InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(
+                "• Updates •",
+                url="https://t.me/Aero_Unity"
+            ),
+            InlineKeyboardButton(
+                "• Owner •",
+                url="https://t.me/Mr_Mohammed_29"
+            )
+        ],
         [
             InlineKeyboardButton(
                 "• Home •",
@@ -109,13 +126,13 @@ def stats_buttons():
     return InlineKeyboardMarkup([
         [
             InlineKeyboardButton(
-                "🔄 Refresh",
+                "• Refresh •",
                 callback_data="refresh_stats"
             )
         ],
         [
             InlineKeyboardButton(
-                "🔙 Home",
+                "• Home •",
                 callback_data="start_home"
             )
         ]
@@ -134,29 +151,28 @@ async def start(client, message):
     except Exception:
         pass
 
-    m = await message.reply_text(
+    status = await message.reply_text(
         "🚀 Sʜᴀᴅᴏᴡ Oғ Mᴏɴᴀʀᴄʜ . . ."
     )
 
     await asyncio.sleep(0.5)
-    await m.edit_text("🎊")
+    await status.edit_text("🎊")
 
     await asyncio.sleep(0.5)
-    await m.edit_text("⚡")
+    await status.edit_text("⚡")
 
     await asyncio.sleep(0.5)
-    await m.edit_text(
-        "🤖 Wᴇʟᴄᴏᴍɪɴɢ Yᴏᴜ . . ."
-    )
+    await status.edit_text("🤖 Wᴇʟᴄᴏᴍɪɴɢ Yᴏᴜ . . .")
 
     await asyncio.sleep(0.7)
-    await m.delete()
+    await status.delete()
 
-    await message.reply_animation(
-        animation=START_GIF,
+    await message.reply_photo(
+        photo=START_IMAGE,
         caption=START_TEXT,
         reply_markup=start_buttons()
     )
+
 
 # ------------------------- #
 # CALLBACK HANDLER
@@ -172,30 +188,23 @@ async def callback_handler(client: Client, query: CallbackQuery):
     except Exception:
         pass
 
-    # -------------------------
     # ABOUT
-    # -------------------------
-
     if data == "about":
-        await query.message.edit_caption(
+        await query.message.reply_photo(
+            photo=ABOUT_IMAGE,
             caption=ABOUT_TEXT,
-            reply_markup=back_button()
+            reply_markup=about_buttons()
         )
 
-    # -------------------------
     # HELP
-    # -------------------------
-
     elif data == "help":
-        await query.message.edit_caption(
+        await query.message.reply_photo(
+            photo=ABOUT_IMAGE,
             caption=HELP_TEXT,
-            reply_markup=back_button()
+            reply_markup=home_button()
         )
 
-    # -------------------------
     # HOME
-    # -------------------------
-
     elif data == "start_home":
         try:
             await query.message.edit_caption(
@@ -203,15 +212,16 @@ async def callback_handler(client: Client, query: CallbackQuery):
                 reply_markup=start_buttons()
             )
         except Exception:
-            await query.message.edit_text(
-                START_TEXT,
-                reply_markup=start_buttons()
-            )
+            try:
+                await query.message.reply_photo(
+                    photo=START_IMAGE,
+                    caption=START_TEXT,
+                    reply_markup=start_buttons()
+                )
+            except Exception:
+                pass
 
-    # -------------------------
     # SETTINGS
-    # -------------------------
-
     elif data == "settings_panel":
         try:
             from utils.user_settings import get_user_settings
@@ -231,13 +241,11 @@ async def callback_handler(client: Client, query: CallbackQuery):
             )
 
             account_name = user_data.get(
-                "account_name",
-                first_name
+                "account_name", first_name
             )
 
             author_name = user_data.get(
-                "author_name",
-                first_name
+                "author_name", first_name
             )
 
             text = f"""
@@ -245,10 +253,8 @@ async def callback_handler(client: Client, query: CallbackQuery):
 
 <b>User ID :</b> <code>{user_id}</code>
 <b>Domain :</b> Telegraph
-
 <b>Account Name :</b> {account_name}
 <b>Author Name :</b> {author_name}
-
 <b>No. of Posts :</b> {post_count}
 """
 
@@ -281,8 +287,8 @@ async def callback_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(
                         "PROFILE LINK",
                         url=(
-                            f"https://t.me/"
-                            f"{author_name.lstrip('@')}"
+                            "https://t.me/"
+                            + author_name.lstrip("@")
                         )
                     )
                 ],
@@ -301,30 +307,22 @@ async def callback_handler(client: Client, query: CallbackQuery):
                         "🔙 Home",
                         callback_data="start_home"
                     )
-                ],
+                ]
             ])
 
-            try:
-                await query.message.edit_caption(
-                    caption=text,
-                    reply_markup=buttons
-                )
-            except Exception:
-                await query.message.edit_text(
-                    text,
-                    reply_markup=buttons
-                )
-
-        except Exception:
             await query.message.reply_text(
-                "⚠️ Unable to load your settings.",
-                reply_markup=settings_back_button()
+                text,
+                reply_markup=buttons
             )
 
-    # -------------------------
-    # REFRESH STATS
-    # -------------------------
+        except Exception as error:
+            await query.message.reply_text(
+                f"⚠️ Unable to load settings.\n"
+                f"<code>{str(error)[:300]}</code>",
+                reply_markup=home_button()
+            )
 
+    # REFRESH STATS
     elif data == "refresh_stats":
         try:
             users = total_users()
@@ -335,41 +333,37 @@ async def callback_handler(client: Client, query: CallbackQuery):
 
 👥 <b>Total Users :</b> {users}
 📝 <b>Total Posts :</b> {posts}
-›› Powered By : @Aero_Unity
+<b>Powered By :</b> @Aero_Unity
 """
 
-            await query.message.edit_text(
+            await query.message.reply_text(
                 text,
                 reply_markup=stats_buttons()
             )
 
         except Exception:
             await query.message.reply_text(
-                "⚠️ <b>Database error.</b>\n"
-                "Please try again later.",
+                "⚠️ Database error. Please try again later.",
                 reply_markup=stats_buttons()
             )
 
-    # -------------------------
     # RESET SETTINGS
-    # -------------------------
-
     elif data == "reset_settings":
         try:
             from utils.user_settings import reset_user_settings
 
             reset_user_settings(query.from_user.id)
 
-            await query.message.edit_text(
+            await query.message.reply_text(
                 "✅ <b>Settings reset completed.</b>",
                 reply_markup=InlineKeyboardMarkup([
                     [
                         InlineKeyboardButton(
-                            "⚙️ Settings",
+                            "• Settings •",
                             callback_data="settings_panel"
                         ),
                         InlineKeyboardButton(
-                            "🔙 Home",
+                            "• Home •",
                             callback_data="start_home"
                         )
                     ]
@@ -378,21 +372,18 @@ async def callback_handler(client: Client, query: CallbackQuery):
 
         except ImportError:
             await query.message.reply_text(
-                "⚠️ Settings reset function is not "
-                "available in your current user-settings module.",
-                reply_markup=settings_back_button()
+                "⚠️ reset_user_settings is missing "
+                "from utils/user_settings.py",
+                reply_markup=home_button()
             )
 
         except Exception:
             await query.message.reply_text(
                 "⚠️ Unable to reset settings.",
-                reply_markup=settings_back_button()
+                reply_markup=home_button()
             )
 
-    # -------------------------
     # NOOP
-    # -------------------------
-
     elif data == "noop":
         return
 
